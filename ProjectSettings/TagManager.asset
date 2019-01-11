@@ -7,6 +7,8 @@ TagManager:
   - Food
   - Thing
   - UI
+  - Ground
+  - InGameManager
   layers:
   - Default
   - TransparentFX

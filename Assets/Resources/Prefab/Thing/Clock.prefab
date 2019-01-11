@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4327234227083294}
   - component: {fileID: 212329452187312362}
   - component: {fileID: 60788940733342966}
+  - component: {fileID: 114059421856935324}
+  - component: {fileID: 50914515866344554}
   m_Layer: 0
   m_Name: Clock
   m_TagString: Thing
@@ -35,12 +37,32 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1720536694257460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.89, y: -1.69, z: 0}
+  m_LocalPosition: {x: 6.83, y: 3.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50914515866344554
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1720536694257460}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0.1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!60 &60788940733342966
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -128,6 +150,17 @@ PolygonCollider2D:
       - {x: -0.3635478, y: -0.6669123}
       - {x: -0.26821566, y: -0.56748736}
       - {x: -0.11801529, y: -0.62070346}
+--- !u!114 &114059421856935324
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1720536694257460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a664a54a8d7ec478c8841679df0db0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212329452187312362
 SpriteRenderer:
   m_ObjectHideFlags: 1
