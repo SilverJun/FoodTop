@@ -26,7 +26,7 @@ public class TouchMoveObj : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+	private void OnCollisionEnter2D(Collision2D other)
     {
         if (!enabled)
         {
@@ -34,43 +34,45 @@ public class TouchMoveObj : MonoBehaviour
         }
 
         Debug.Log(gameObject.name);
-        Debug.Log("trigger enter");
-        if (other.CompareTag("Food") || other.CompareTag("Thing") || other.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Food") || other.gameObject.CompareTag("Ground"))
         {
             StopCoroutine(Rotate());
             _inGame.NextObject();
             GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             enabled = false;
         }
-        else
+		else if (other.gameObject.CompareTag("Thing"))
         {
-            // Game Over!
-            Debug.Log("Game Over!!");
-        }
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (!enabled)
-        {
-            return;
-        }
-
-        Debug.Log(gameObject.name);
-        Debug.Log("trigger stay");
-        if (other.CompareTag("Food") || other.CompareTag("Thing") || other.CompareTag("Ground"))
-        {
-            StopCoroutine(Rotate());
-            _inGame.NextObject();
+			// Game Over!
+			StopCoroutine(Rotate());
+            _inGame.GameOver();
             GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             enabled = false;
         }
-        else
-        {
-            // Game Over!
-            Debug.Log("Game Over!!");
-        }
     }
+    
+ //   private void OnCollisionStay2D(Collision2D other)
+	//{
+  //      if (!enabled)
+  //      {
+  //          return;
+  //      }
+
+  //      Debug.Log(gameObject.name);
+  //      Debug.Log("trigger stay");
+		//if (other.gameObject.CompareTag("Food") || other.gameObject.CompareTag("Thing") || other.gameObject.CompareTag("Ground"))
+    //    {
+    //        StopCoroutine(Rotate());
+    //        _inGame.NextObject();
+    //        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+    //        enabled = false;
+    //    }
+    //    else
+    //    {
+    //        // Game Over!
+    //        Debug.Log("Game Over!!");
+    //    }
+    //}
 
     IEnumerator Rotate()
     {
@@ -80,4 +82,6 @@ public class TouchMoveObj : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
         }
     }
+
+
 }
