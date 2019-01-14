@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class FailMenu : UI {
     
@@ -10,8 +11,10 @@ public class FailMenu : UI {
 		Vars["Score"].GetComponent<Text>().text = PlayerPrefs.GetInt("Score", 0).ToString() + " m";
 
 		Vars["Back"].GetComponent<Button>().onClick.AddListener(()=>{
-			Close();
-			UIManager.OpenUI<MainMenu>(Resources.Load<GameObject>("Prefab/MainMenu"));
+			//Close();
+			//UIManager.OpenUI<MainMenu>(Resources.Load<GameObject>("Prefab/MainMenu"));
+
+            SceneManager.LoadScene(0);
 		});
 	}
 }

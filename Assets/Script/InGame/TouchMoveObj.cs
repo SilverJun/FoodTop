@@ -34,18 +34,18 @@ public class TouchMoveObj : MonoBehaviour
         }
 
         Debug.Log(gameObject.name);
-        if (other.gameObject.CompareTag("Food") || other.gameObject.CompareTag("Ground"))
+        if (CompareTag("Thing") && other.gameObject.CompareTag("Food") || other.gameObject.CompareTag("Thing")) //현재 오브젝트가 사물, 맨 위 오브젝트가 음식이면,
         {
+            // Game Over!
             StopCoroutine(Rotate());
-            _inGame.NextObject();
+            _inGame.GameOver();
             GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             enabled = false;
         }
-		else if (other.gameObject.CompareTag("Thing"))
+        else if (other.gameObject.CompareTag("Food") || other.gameObject.CompareTag("Ground"))      // 현재가 음식, 맨위도 음식, 또는 땅.
         {
-			// Game Over!
-			StopCoroutine(Rotate());
-            _inGame.GameOver();
+            StopCoroutine(Rotate());
+            _inGame.NextObject();
             GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             enabled = false;
         }
